@@ -1,0 +1,79 @@
+/* One sheet for any move (rounds/08): in the header the person (a 40 x 50
+   photo, the name in light 20px, "Today, Mon 16 Nov"), then WHAT KIND, WHAT
+   DID YOU SAY? (white, an ink edge), "+ Use your check-in message" in dim
+   13px, HOW, A NOTE FOR YOU (a light edge, "Only you see this"), and COPY
+   AND OPEN with DONE (mango on ink) at the foot. */
+.one-sheet { min-height: min(774px, calc(var(--vv-height, 100svh) * .92)); }
+.one-sheet .sheet-body { display: flex; flex-direction: column; flex: 1; padding-top: 0; }
+.one-sheet .sheet-header h2 { min-width: 0; font: inherit; letter-spacing: 0; text-transform: none; }
+.move-who { display: flex; align-items: center; gap: 12px; }
+.move-who .ph { width: 40px; height: 50px; flex: none; }
+.move-who-words { display: flex; flex-direction: column; min-width: 0; }
+.move-name { font: 300 20px/26px var(--ui); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.move-handle { font: 400 13px/18px var(--ui); color: var(--dim); }
+.one-label { display: block; margin: 16px 0 8px; }
+.one-label[for] { margin-bottom: 6px; }
+.move-text { display: block; width: 100%; field-sizing: content; max-height: 40vh; padding: 12px 14px; border: 0; border-radius: 12px; background: var(--card);
+  font: 400 16px/23px var(--ui); color: var(--text); resize: none; outline: none; -webkit-appearance: none; }
+.move-text::placeholder { color: var(--off-1); }
+.one-said { min-height: 70px; box-shadow: inset 0 0 0 1.5px var(--text); }
+.one-note, .one-prom-what { min-height: 44px; padding-top: 10px; padding-bottom: 10px; box-shadow: inset 0 0 0 1px var(--line); }
+.one-note:focus, .one-prom-what:focus { box-shadow: inset 0 0 0 1.5px var(--text); }
+.one-offer { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; min-height: 36px; margin-top: 2px; font: 400 13px/18px var(--ui); color: var(--dim); }
+.one-offer[hidden] { display: none; }
+.one-offer svg { width: 14px; height: 14px; }
+.move-draft { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--paper); font: 400 15px/21px var(--ui); }
+.move-draft[hidden] { display: none; }
+.one-btns { display: flex; gap: 8px; margin-top: auto; padding-top: 20px; }
+.one-btns .btn { flex: 1; min-width: 0; }
+.one-btns .btn.primary { color: var(--partner); } /* DONE in mango, as in rounds/08 */
+/* A year since: one of the shoot's finals, as it is, ready to share. */
+.move-final { display: flex; align-items: flex-end; gap: 12px; margin-top: 12px; }
+.move-final[hidden] { display: none; }
+.move-final img { display: block; width: auto; height: auto; max-width: 62%; max-height: 150px; border-radius: 4px; }
+
+/* What you said (rounds/09): the tag in the header, "Checked in with
+   Lindsey" in light 22px, the day and how, WHAT YOU SAID in light 17px, YOUR
+   NOTE in dim 15px; DELETE (dim text), EDIT and COPY AGAIN at the foot. */
+.said-sheet .sheet-body { padding-top: 2px; }
+.said-title { margin: 0; font: 300 22px/28px var(--ui); }
+.said-when { margin: 4px 0 0; font: 400 14px/20px var(--ui); color: var(--dim); }
+.said-label { margin: 20px 0 6px; }
+.said-words { margin: 0; font: 300 17px/25px var(--ui); white-space: pre-wrap; overflow-wrap: anywhere; }
+.said-note { margin: 0; font: 400 15px/21px var(--ui); color: var(--dim); }
+.said-btns { display: flex; gap: 8px; align-items: center; margin-top: 28px; }
+.said-btns .btn { flex: 1; min-width: 0; }
+.said-btns .text-btn { min-height: 44px; padding: 0 12px; margin-left: -12px; }
+/* SAVE THIS AS YOUR <KIND> MESSAGE (rounds/14, 18 Nov): under the box once
+   your message was used and changed; a 20px tick box, berry blade black
+   with a mango tick when on. */
+.save-msg { position: relative; display: flex; align-items: center; gap: 10px; margin-top: 8px; padding: 10px 12px; border-radius: 10px; background: #EFEFEA; cursor: pointer; }
+.save-msg[hidden] { display: none; }
+.save-msg-input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.save-msg-box { flex: none; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: var(--card); box-shadow: inset 0 0 0 1.5px var(--text); color: var(--partner); }
+.save-msg-box svg { visibility: hidden; }
+.save-msg-input:checked + .save-msg-box { background: var(--text); box-shadow: none; }
+.save-msg-input:checked + .save-msg-box svg { visibility: visible; }
+.save-msg-input:focus-visible + .save-msg-box { outline: 2px solid var(--text); outline-offset: 2px; }
+.save-msg-words { flex: 1; min-width: 0; font: 400 14px/19px var(--ui); }
+.save-msg-sub { display: block; font: 400 12px/16px var(--ui); color: var(--dim); }
+/* Who it's with, on WHAT YOU SAID and a moment opened from DONE TODAY (20
+   Nov): their photo and name, a way to their page. */
+.who-row { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; padding: 0 0 12px; border-bottom: 1px solid var(--line); color: var(--text); }
+.who-row .ph { width: 40px; height: 50px; flex: none; }
+.who-words { display: flex; flex-direction: column; min-width: 0; }
+.who-name { font: 400 17px/22px var(--ui); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.who-open { display: inline-flex; align-items: center; gap: 4px; font: 700 11px/14px var(--ui); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+.who-open svg { width: 10px; height: 10px; }
+/* ANYTHING PROMISED? (21 Nov, as Callback's log sheet): a box like the note;
+   once something's typed, WHO PROMISED as chips and BY WHEN under it, and,
+   editing a move, its tick. From KEPT IT: the promise on top, in a pale
+   box, with MARK IT KEPT WITHOUT LOGGING. */
+.one-prom-more { display: flex; flex-direction: column; margin-top: 10px; }
+.one-prom-more[hidden] { display: none; }
+.one-prom-label { display: block; margin: 12px 0 6px; } /* BY WHEN, under the chips */
+.one-prom-tick { margin-top: 12px; }
+.one-keeps { margin-top: 8px; padding: 2px 14px 6px; border-radius: 12px; background: #EFEFEA; }
+.one-keeps .one-label { margin-top: 12px; margin-bottom: 4px; }
+.one-keeps-what { margin: 0; font: 300 17px/24px var(--ui); overflow-wrap: anywhere; }
+.one-keeps-skip { margin: 4px 0 0 -10px; }

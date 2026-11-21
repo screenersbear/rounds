@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Rounds</title>
+<meta name="description" content="A light networking checklist for photographers: a few people to write to each day." />
+<!-- Rounds on its own: everything it keeps is under its own names (df-rounds), so it never shares data with Rounds inside Documenting Fictions on the same website. -->
+<script>
+(function () {
+  var P = 'df-rounds:';
+  var ls; try { ls = window.localStorage; } catch (e) { return; }
+  var S = Storage.prototype, get = S.getItem, set = S.setItem, del = S.removeItem;
+  S.getItem = function (k) { return get.call(this, this === ls ? P + k : k); };
+  S.setItem = function (k, v) { return set.call(this, this === ls ? P + k : k, v); };
+  S.removeItem = function (k) { return del.call(this, this === ls ? P + k : k); };
+  if (window.IDBFactory) {
+    var F = IDBFactory.prototype, open = F.open, drop = F.deleteDatabase;
+    F.open = function (name, version) { return version === undefined ? open.call(this, 'df-rounds-' + name) : open.call(this, 'df-rounds-' + name, version); };
+    F.deleteDatabase = function (name) { return drop.call(this, 'df-rounds-' + name); };
+  }
+})();
+</script>
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#313D45" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Rounds" />
+<link rel="apple-touch-icon" href="icons/icon-180.png" />
+<link rel="icon" type="image/png" href="icons/icon-192.png" />
+<link rel="preload" href="fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin />
+<!-- How it looks: the stylesheets in styles/, joined in order into one file (files.txt lists them). -->
+<link rel="stylesheet" href="built/app.css" />
+</head>
+<body>
+<div id="frame" class="frame">
+  <div class="paper"><main id="view" tabindex="-1"></main></div>
+</div>
+<nav class="nav-bar" id="navbar" aria-label="Sections" hidden></nav>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<noscript><p>This app needs JavaScript turned on.</p></noscript>
+<!-- The hand-offs the notebooks share (window.DFData, window.DFConnect): the suite's shared/data/, copied into data/shared/ and joined in order into one file (files.txt lists them). -->
+<script src="built/shared-data.js"></script>
+<!-- The scripts: app.js and every module it imports, joined into one file (files.txt says how). -->
+<script type="module" src="built/app.js"></script>
+</body>
+</html>
